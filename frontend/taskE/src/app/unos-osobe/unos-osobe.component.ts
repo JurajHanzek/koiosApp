@@ -63,7 +63,7 @@ export class UnosOsobeComponent implements OnInit {
         () => {
           Swal.fire({
             icon: 'success',
-            title: 'Uspješno spremljeno! Želite li nastaviti s unosom osoba?',
+            title: 'Uspješno spremljeno! Želite li unijeti jos jednu osobu?',
             showDenyButton: true,
             showCancelButton: false,
             confirmButtonText: 'Da',
@@ -96,7 +96,7 @@ export class UnosOsobeComponent implements OnInit {
       () => {
         Swal.fire({
           icon: 'success',
-          title: 'Želite li nastaviti s unosom osoba?',
+          title: ' Želite li unijeti jos jednu osobu?',
           showDenyButton: true,
           showCancelButton: false,
           confirmButtonText: 'Da',
