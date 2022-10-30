@@ -7,16 +7,33 @@
         <li class="nav-item "  [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['osobe']">Osobe <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item"  [routerLinkActive]="['active']">
+        <li class="nav-item" style="cursor: pointer;"  *ngIf="!isLoggedIn">
+          <a class="nav-link" (click)="pleaseLogin()">Unos osobe</a>
+        </li>
+        <li class="nav-item"  [routerLinkActive]="['active']"  *ngIf="isLoggedIn">
           <a class="nav-link" [routerLink]="['unos-osobe']">Unos osobe</a>
         </li>
         <li class="nav-item"  [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['kontakt']">Kontakt</a>
         </li>
       </ul>
-      <span class="nav-item"   [routerLinkActive]="['active']">
+      <!-- <span class="nav-item"   [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['login']" style="color: black;">Login / Registracija</a>
-      </span>
+      </span> -->
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link" routerLink="register">Registracija</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login">Prijava</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">Odjava</a>
+        </li>
+      </ul>
     </div>
   </nav>
   <hr>

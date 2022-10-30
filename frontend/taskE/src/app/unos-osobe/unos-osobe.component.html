@@ -19,12 +19,14 @@
       </div>
     <div class="form-group">
       <label for="datumRodenja">Datum rođenja</label>
-      <input type="date" class="form-control" name="datumRodenja" placeholder="dd.mm.yyyy" required [(ngModel)]="osoba.datumRodenja">
+      <input type="date" class="form-control" name="datumRodenja" placeholder="dd.mm.yyyy" required [(ngModel)]="osoba.datumRodenja ">
     </div>
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" class="form-control" name="email" placeholder="primjer@email.com" required [(ngModel)]="osoba.email">
     </div>
     <button 
-      type="submit" class="btn btn-primary">Unos</button>
+      type="submit" class="btn btn-primary" *ngIf="idOsobaZaAzuriranje == 0">Unos</button>
+      <button 
+      type="submit" class="btn btn-primary" *ngIf="idOsobaZaAzuriranje != 0">Ažuriraj</button>
   </form>

@@ -1,48 +1,75 @@
-<div class="login-wrap" >
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign in</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign up</label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-				<div class="group">
-					<label for="user" class="label">Email</label>
-					<input id="user" type="text" class="input" autocomplete="off" 
-					placeholder="Enter email" >
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input"  placeholder="Enter password" data-type="password" >
-				</div>
-				<div class="group">
-					<button 
-                                class="button" type="submit" style="font-weight:bold ;">Login
-                            </button>
-				</div>
-				<div class="hr"></div>
-			</div>
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Korisničko ime</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="username.errors && f.submitted"
+        >
+          Korisničko ime je potrebno!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Lozinka</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="password.errors && f.submitted"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Lozinka mora sadrzavati barem 6 znakova
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Prijava
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Neuspješna prijava: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
 
-            
-			<div class="sign-up-htm" >
-				<div class="group">
-					<label for="user" class="label">Email </label>
-					<input id="user" autocomplete="off" type="email" class="input"  placeholder="Sign up with AAI@EduHr "  required>
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" required>
-				</div>
-				<div class="group">
-					<label  class="label">repeat password</label>
-					<input id="sd" type="password" class="input" data-type="password" required>
-				</div>                                                      
-				<div class="group" style="padding-top: 30px;">
-					<button primary
-                                class="button  btn-primary" type="submit">Sign up
-                            </button>
-				</div>
-				<div class="hr"></div>
-			
-			</div>
-		</div>
-	</div>
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Prijavljen s rolom: {{ roles }}.
+    </div>
+  </div>
 </div>

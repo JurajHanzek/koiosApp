@@ -1,4 +1,5 @@
 export interface Osoba {
+    id:number;
     ime: string;
     prezime: string;
     adresa: string;
