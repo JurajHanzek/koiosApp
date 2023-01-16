@@ -14,7 +14,5 @@ CRUD app spring+angular
 
    Funkcionalnosti:
     -Tražilica po imenu, prezimenu ili datumu rođenja
-
     -Schema Migration: flyway
-
     -Export u PDF, EXCEL, XML ili WORD 
