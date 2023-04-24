@@ -1,129 +1,127 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light blue">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto" style="margin-left: 50%;">
-        <li class="nav-item "  [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['osobe']">Tehničko Veleučilište u Zagrebu <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" style="cursor: pointer;"  *ngIf="!isLoggedIn">
-          <a class="nav-link" (click)="pleaseLogin()">Unos osobe</a>
-        </li>
-        <li class="nav-item"  [routerLinkActive]="['active']"  *ngIf="isLoggedIn">
-          <a class="nav-link" [routerLink]="['unos-osobe']">Unos osobe</a>
-        </li>
-        <li class="nav-item"  [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['kontakt']">Kontakt</a>
-        </li>
-      </ul>  
-      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-        <li class="nav-item" style="z-index: 1111;">
-          <a href="/register" class="nav-link" routerLink="register">Registracija</a>
-        </li>
-        <li class="nav-item" style="z-index: 1111;">
-          <a href="/login" class="nav-link" routerLink="login">Prijava</a>
-        </li>
-      </ul>
-  
-      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-        <li class="nav-item" style="z-index: 1111;">
-          <a href class="nav-link" (click)="logout()">Odjava</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <hr> -->
-  <!-- app.component.html -->
-<div class="container" style="color: black;">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" >
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Messages </a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
-        </ul>
-        <form class="navbar-form navbar-right" action="#" method="GET">
+<body>
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." id="query" name="search" value="">
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-            </div>
+              <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+              <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
           </div>
-        </form>
-      </div>
-    </div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#!">Settings</a></li>
+                  <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#!">Logout</a></li>
+              </ul>
+          </li>
+      </ul>
   </nav>
-
-
-<div id="wrapper" class="toggled">
-    <div class="container-fluid">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-              	<li class="sidebar-brand">
-                    <br>
-                </li>
-                <li class="sidebar-brand">
-                    <a href="#" class="navbar-brand">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
-                </li>
-                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
-                </li>                
-                <li>
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> STATISTICS</font>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Reports</a>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Statistic</a>
-                </li>
-                <li>
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> ADMINISTRATION</font>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
-                </li>
-              	<li>
-                    <a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                      <br>
-                      <h1>Your Title</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-						Your Content
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-</div>
+  <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+              <div class="sb-sidenav-menu">
+                  <div class="nav">
+                      <div class="sb-sidenav-menu-heading">Core</div>
+                      <a class="nav-link" href="index.html">
+                          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                          Dashboard
+                      </a>
+                      <div class="sb-sidenav-menu-heading">Interface</div>
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                          Layouts
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav">
+                              <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                              <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                          </nav>
+                      </div>
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                          Pages
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Authentication
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              </a>
+                              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                  <nav class="sb-sidenav-menu-nested nav">
+                                      <a class="nav-link" href="login.html">Login</a>
+                                      <a class="nav-link" href="register.html">Register</a>
+                                      <a class="nav-link" href="password.html">Forgot Password</a>
+                                  </nav>
+                              </div>
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                  Error
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              </a>
+                              <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                  <nav class="sb-sidenav-menu-nested nav">
+                                      <a class="nav-link" href="401.html">401 Page</a>
+                                      <a class="nav-link" href="404.html">404 Page</a>
+                                      <a class="nav-link" href="500.html">500 Page</a>
+                                  </nav>
+                              </div>
+                          </nav>
+                      </div>
+                      <div class="sb-sidenav-menu-heading">Addons</div>
+                      <a class="nav-link" href="charts.html">
+                          <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                          Charts
+                      </a>
+                      <a class="nav-link" href="tables.html">
+                          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                          Tables
+                      </a>
+                  </div>
+              </div>
+              <div class="sb-sidenav-footer">
+                  <div class="small">Logged in as:</div>
+                  Start Bootstrap
+              </div>
+          </nav>
+      </div>
+      <div id="layoutSidenav_content">
+          <main>
+              <div class="container-fluid px-4">
+                  <h1 class="mt-4">Static Navigation</h1>
+                  <ol class="breadcrumb mb-4">
+                      <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                      <li class="breadcrumb-item active">Static Navigation</li>
+                  </ol>
+                  <div class="card mb-4">
+                  </div>
+                  <div style="height: 100vh"></div>
+                  <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
+              </div>
+          </main>
+          <footer class="py-4 bg-light mt-auto">
+              <div class="container-fluid px-4">
+                  <div class="d-flex align-items-center justify-content-between small">
+                      <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                      <div>
+                          <a href="#">Privacy Policy</a>
+                          &middot;
+                          <a href="#">Terms &amp; Conditions</a>
+                      </div>
+                  </div>
+              </div>
+          </footer>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="/src/assets/scripts.js"></script>
+</body>
