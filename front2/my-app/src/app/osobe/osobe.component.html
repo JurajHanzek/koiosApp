@@ -1,0 +1,48 @@
+  <div class="center">
+    <div >
+      <label>Pretraga po imenu:  </label>
+      <input [(ngModel)]="mymodelIme"  (input)="valuechangeIme($event)" type="text" placeholder="Pretraga... " style="margin-left: 5px;">
+      <span style="display:none">{{mymodelIme}}</span>
+      <div class="search"></div><br>
+      <label>Pretraga po prezimenu:  </label>
+      <input [(ngModel)]="mymodelPrezime"  (input)="valuechangePrezime($event)" type="text" placeholder="Pretraga... " style="margin-left: 5px;">
+      <span style="display:none">{{mymodelPrezime}}</span>
+      <div class="search"></div><br>
+      <label>Pretraga po datumu rođenja:  </label>
+      <input [(ngModel)]="mymodelDatum"  (input)="valuechangeDatum($event)" type="text" placeholder="dd/mm/yyyy " style="margin-left: 5px;">
+      <span style="display:none">{{mymodelDatum}}</span>
+      <div class="search"></div><br>
+    </div>
+  <table id="htmlData"class="table table-hover" style="text-align:center" #TABLE>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Prezime</th>
+        <th scope="col">Adresa</th>
+        <th scope="col">Grad</th>
+        <th scope="col">Datum Rođenja</th>
+        <th scope="col">Email</th>
+        <th scope="col">-</th>
+        <th scope="col">-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of osobe">
+        <th scope="row" >{{ x.id }}</th>
+        <td>{{ x.ime }}</td>
+        <td>{{ x.prezime }}</td>
+        <td>{{ x.adresa }}</td>
+        <td>{{ x.grad }}</td>
+        <td>{{ datum(x.datumRodenja) }}</td>
+        <td>{{ x.email }}</td>
+        <td  style="color: red; cursor: pointer;" (click)="izbrisi(x.id)">Izbriši</td>
+        <td  style="color: blue; cursor: pointer;" (click)="azuriraj(x.id)">Ažuriraj</td>
+      </tr>
+    </tbody>
+  </table>
+    <button class="btn btn-success" (click)="openPDF()">Preuzmi PDF</button>
+    <button class="btn btn-success" (click)="ExportTOExcel()">Preuzmi Excel</button>
+    <button class="btn btn-success" (click)="ExportTOXml()">Preuzmi XML</button>
+    <button class="btn btn-success" (click)="ExportTOWord()">Preuzmi Word</button>
+</div>
