@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light blue">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light blue">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto" style="margin-left: 50%;">
         <li class="nav-item "  [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['osobe']">Osobe <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['osobe']">Tehničko Veleučilište u Zagrebu <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" style="cursor: pointer;"  *ngIf="!isLoggedIn">
           <a class="nav-link" (click)="pleaseLogin()">Unos osobe</a>
@@ -17,23 +17,113 @@
           <a class="nav-link" [routerLink]="['kontakt']">Kontakt</a>
         </li>
       </ul>  
-      <!-- <span class="nav-item"   [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['login']" style="color: black;">Login / Registracija</a>
-      </span> -->
       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-        <li class="nav-item">
+        <li class="nav-item" style="z-index: 1111;">
           <a href="/register" class="nav-link" routerLink="register">Registracija</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="z-index: 1111;">
           <a href="/login" class="nav-link" routerLink="login">Prijava</a>
         </li>
       </ul>
   
       <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-        <li class="nav-item">
+        <li class="nav-item" style="z-index: 1111;">
           <a href class="nav-link" (click)="logout()">Odjava</a>
         </li>
       </ul>
     </div>
   </nav>
-  <hr>
+  <hr> -->
+  <!-- app.component.html -->
+<div class="container" style="color: black;">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Messages </a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" action="#" method="GET">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." id="query" name="search" value="">
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+<div id="wrapper" class="toggled">
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              	<li class="sidebar-brand">
+                    <br>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#" class="navbar-brand">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                </li>
+                 <li>
+                    <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
+                </li>                
+                <li>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> STATISTICS</font>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Reports</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Statistic</a>
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> ADMINISTRATION</font>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
+                </li>
+              	<li>
+                    <a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <br>
+                      <h1>Your Title</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+						Your Content
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+</div>
