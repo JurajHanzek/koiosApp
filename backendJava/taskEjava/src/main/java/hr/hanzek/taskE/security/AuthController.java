@@ -70,7 +70,13 @@ public class AuthController {
                          userDetails.getId(), 
                          userDetails.getUsername(), 
                          userDetails.getEmail(), 
-                         roles));
+                         userDetails.getName(),
+                         roles,
+                         userDetails.getSmjer(),
+                         userDetails.getRedovan(),
+                         userDetails.getSemestar(),
+                         userDetails.getJmbag()
+                         ));
   }
 
   @PostMapping("/signup")
@@ -90,7 +96,8 @@ public class AuthController {
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), 
                signUpRequest.getEmail(),
-               encoder.encode(signUpRequest.getPassword()));
+               encoder.encode(signUpRequest.getPassword()), "", null, null, null, null
+               );
 
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();
@@ -108,6 +115,17 @@ public class AuthController {
           roles.add(adminRole);
 
           break;
+        case "referada":
+            Role referadaRole = roleRepository.findByName(ERole.REFERADA)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(referadaRole);
+
+            break;
+        case "student":
+            Role studentRole = roleRepository.findByName(ERole.STUDENT)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(studentRole);
+            break;
         case "mod":
           Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

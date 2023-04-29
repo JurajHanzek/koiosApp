@@ -13,6 +13,14 @@ import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PostavkeComponent } from './postavke/postavke.component';
+import { NovaMolbaComponent } from './nova-molba/nova-molba.component';
+import { PregledMolbiComponent } from './pregled-molbi/pregled-molbi.component';
+import { NoviUpisComponent } from './novi-upis/novi-upis.component';
+import { PregledUpisaComponent } from './pregled-upisa/pregled-upisa.component';
+import { DokumentiComponent } from './dokumenti/dokumenti.component';
+import { NaslovnaComponent } from './naslovna/naslovna.component';
+import { ObavijestiComponent } from './obavijesti/obavijesti.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +31,14 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     LoginComponent,
     NavbarComponent,
     KontaktComponent,
+    PostavkeComponent,
+    NovaMolbaComponent,
+    PregledMolbiComponent,
+    NoviUpisComponent,
+    PregledUpisaComponent,
+    DokumentiComponent,
+    NaslovnaComponent,
+    ObavijestiComponent,
   ],
   imports: [
     BrowserModule,

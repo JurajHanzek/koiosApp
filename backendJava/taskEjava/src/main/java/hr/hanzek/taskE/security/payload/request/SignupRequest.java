@@ -14,7 +14,19 @@ public class SignupRequest {
   @Email
   private String email;
 
-  private Set<String> role;
+  @NotBlank
+  @Size(max = 100)
+  private String first_last_name;
+
+  public String getFirst_last_name() {
+	return first_last_name;
+}
+
+public void setFirst_last_name(String first_last_name) {
+	this.first_last_name = first_last_name;
+}
+
+private Set<String> role;
 
   @NotBlank
   @Size(min = 6, max = 40)

@@ -19,21 +19,31 @@ public class UserDetailsImpl implements UserDetails {
   private Long id;
 
   private String username;
+  private String name;
 
   private String email;
+  private String smjer;
+  private String semestar;
+  private Boolean redovan;
+  private String jmbag;
 
   @JsonIgnore
   private String password;
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+  public UserDetailsImpl(Long id, String username, String email, String password,String name,String smjer,String semestar,Boolean redovan,
+      Collection<? extends GrantedAuthority> authorities, String jmbag) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.authorities = authorities;
+    this.name=name;
+    this.smjer = smjer;
+    this.redovan= redovan;
+    this.semestar = semestar;
+    this.jmbag=jmbag;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -46,10 +56,40 @@ public class UserDetailsImpl implements UserDetails {
         user.getUsername(), 
         user.getEmail(),
         user.getPassword(), 
-        authorities);
+        user.getFirst_last_name(),
+        user.getSmjer(),
+        user.getSemestar(),
+        user.getRedovan(),
+        authorities,
+        user.getJmbag());
+    		
   }
 
-  @Override
+  public String getSmjer() {
+	return smjer;
+}
+
+public void setSmjer(String smjer) {
+	this.smjer = smjer;
+}
+
+public String getSemestar() {
+	return semestar;
+}
+
+public void setSemestar(String semestar) {
+	this.semestar = semestar;
+}
+
+public Boolean getRedovan() {
+	return redovan;
+}
+
+public void setRedovan(Boolean redovan) {
+	this.redovan = redovan;
+}
+
+@Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return authorities;
   }
@@ -101,4 +141,20 @@ public class UserDetailsImpl implements UserDetails {
     UserDetailsImpl user = (UserDetailsImpl) o;
     return Objects.equals(id, user.id);
   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public String getJmbag() {
+	return jmbag;
+}
+
+public void setJmbag(String jmbag) {
+	this.jmbag = jmbag;
+}
 }

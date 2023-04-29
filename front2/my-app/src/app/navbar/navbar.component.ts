@@ -10,12 +10,16 @@ import { ElementRef } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 [x: string]: any;
-  private roles: string[] = [];
+   roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  name?: string;
   isCollapsed = false;
+  isRedovan = true;
+  smjer = '';
+  semestar = '';
   @ViewChild('sidebarToggle') ssd: ElementRef | undefined;
 
   constructor(private tokenStorageService: TokenStorageService,private renderer: Renderer2) { }
@@ -29,6 +33,10 @@ export class NavbarComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.username = user.username;
+      this.name = user.name;
+      this.smjer = user.smjer;
+      this.semestar = user.semestar;
+      this.isRedovan = user.redovan;
     }
 
     

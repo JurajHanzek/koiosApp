@@ -1,0 +1,197 @@
+:root {
+    --panel-color: rgba(0, 0, 0, 0.135);
+    --panel-border-width: 0.1em;
+    --panel-padding: 0.75em;
+  }
+  
+  .panel {
+    background: var(--panel-color);
+    border-radius: var(--panel-border-width);
+    padding: var(--panel-border-width);
+  }
+  
+  .panel__header, 
+  .panel__content {
+    padding: var(--panel-padding);
+  }
+  
+  .panel__title {
+    line-height: 1;
+  }
+  
+  .panel__content {
+    /* background: #af2d2d; */
+  }
+  
+  /**
+   * The styles below are unrelated to this demo and are just for scaffolding purposes.
+   */
+  
+  * {
+    font-family: sans-serif;
+    line-height: 1.4;
+    padding: 0;
+  }
+  
+  html {
+    height:100%;
+    display: flex;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .example {
+    border:1px dotted black;
+    display: flex;
+    flex-grow: 1;
+    /* padding: 1em max(1em, calc(50vw - 35ch)); */
+    padding: 2em;
+    text-align: left;
+    /* place-items: center; */
+  }
+  
+  .example > * {
+    flex-grow: 1;
+  }
+  
+  .bg-1 {
+    background-image: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgb(199, 129, 129) 0%, rgb(151, 37, 37) 100.2% );
+  }
+  
+  
+  .bg-3 {
+    background-image: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgb(142, 176, 137) 0%, rgb(145, 151, 37) 100.2% );
+  }
+  .bg-2 {
+    background-image: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgb(199, 195, 129) 0%, rgb(151, 37, 37) 100.2% );
+  }
+
+  .bg-4 {
+    background-image: radial-gradient( circle farthest-corner at 1.5% 1.4%,  rgb(124, 124, 190) 0%, rgb(13, 68, 156) 100.2% );
+  }
+
+  .box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    padding-right: 15px;
+    border: 1px solid black;
+    clear: both;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .green {
+    background-color: green;
+  }
+  
+  .yellow {
+    background-color: rgb(183, 218, 24);
+  }
+  .modal {
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    width: 500px;
+    height: 400px;
+    margin:0 auto;
+    position: absolute;
+    left: 0;
+    right:0;
+    top: 35%; 
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+ }
+ .button {
+  background-color: #c7c2c0;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style the form container */
+#myModal {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Style the form labels */
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Style the form inputs */
+.form-control {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Style the form textarea */
+textarea.form-control {
+  resize: vertical;
+}
+
+/* Style the form buttons */
+.btn {
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+
+/* Style the form buttons with primary and secondary colors */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Style the form buttons on hover */
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Style the form invalid input fields */
+.form-control:invalid {
+  border-color: #dc3545;
+}
+
+/* Style the form invalid feedback messages */
+.invalid-feedback {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+/* Style the form success feedback message */
+.success-feedback {
+  color: #28a745;
+  margin-top: 5px;
+}

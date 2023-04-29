@@ -8,21 +8,62 @@ public class JwtResponse {
   private Long id;
   private String username;
   private String email;
+  private String name;
   private List<String> roles;
-
-  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+  private String smjer;
+  private String semestar;
+  private Boolean redovan;
+  private String jmbag;
+  public JwtResponse(String accessToken, Long id, String username, String email,String name, List<String> roles,String smjer,Boolean redovan,String semestar, String jmbag) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
     this.email = email;
     this.roles = roles;
+    this.name = name;
+    this.smjer = smjer;
+    this.semestar = semestar;
+    this.redovan = redovan;
+    this.jmbag=jmbag;
   }
+  
+  
 
-  public String getAccessToken() {
+  public String getSmjer() {
+	return smjer;
+}
+
+
+public void setSmjer(String smjer) {
+	this.smjer = smjer;
+}
+
+
+public String getAccessToken() {
     return token;
   }
 
-  public void setAccessToken(String accessToken) {
+  public String getSemestar() {
+	return semestar;
+}
+
+public void setSemestar(String semestar) {
+	this.semestar = semestar;
+}
+
+public Boolean getRedovan() {
+	return redovan;
+}
+
+public void setRedovan(Boolean redovan) {
+	this.redovan = redovan;
+}
+
+public void setRoles(List<String> roles) {
+	this.roles = roles;
+}
+
+public void setAccessToken(String accessToken) {
     this.token = accessToken;
   }
 
@@ -61,4 +102,24 @@ public class JwtResponse {
   public List<String> getRoles() {
     return roles;
   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+
+
+public String getJmbag() {
+	return jmbag;
+}
+
+
+
+public void setJmbag(String jmbag) {
+	this.jmbag = jmbag;
+}
 }

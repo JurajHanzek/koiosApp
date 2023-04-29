@@ -1,0 +1,93 @@
+
+<div style="margin-left: -4%; ">
+    <div class="container-xxl py-9">
+        <div class="row">
+<div class=" bg-4" style="padding:2em">           
+<h1  >Obavijesti studentske referade</h1>
+<p><span class="box red"></span> Važno</p>
+<p><span class="box yellow"></span>Bitno</p>
+<p><span class="box green"></span>Informativno</p>
+<button *ngIf="roles[0] == 'REFERADA'">DODAJ NOVOST</button>
+<button class="button" onclick="document.getElementById('myModal').style.display='block'">DODAJ NOVOST</button>
+</div> 
+
+
+<div id="myModal" class="modal">
+    <form class="centriraj needs-validation" (ngSubmit)="submit()" ngNativeValidate novalidate>
+      <div class="form-group">
+        <label for="ime">Unos nove obavijesti</label>
+        <input type="text" class="form-control" name="ime" placeholder="Unesite naslov" required  [(ngModel)]="oba.naslov">
+        <div class="invalid-feedback">Unesite naslov.</div>
+      </div>
+      <div class="form-group">
+        <label for="prezime">Opis</label>
+        <textarea class="form-control" name="prezime" placeholder="Unesite opis" rows="3" required  [(ngModel)]="oba.opis"></textarea>
+        <div class="invalid-feedback">Unesite opis.</div>
+      </div>
+      <div class="form-group">
+        <label for="prioritet">Prioritet</label>
+        <select class="form-control" name="prioritet" required  [(ngModel)]="oba.prioritet">
+          <option value="">Odaberite prioritet</option>
+          <option value=3>Nizak</option>
+          <option value=2>Srednji</option>
+          <option value=1>Visok</option>
+        </select>
+        <div class="invalid-feedback">Odaberite prioritet.</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary"  onclick="document.getElementById('myModal').style.display='none'">Spremi</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"  onclick="document.getElementById('myModal').style.display='none'">Zatvori</button>
+      </div>
+    </form>
+  </div>
+
+
+<div *ngFor="let x of obavijesti" style="margin-top: -15px;">
+  <div class="example bg-1" *ngIf="x.prioritet === 1" >
+    <section class="panel">
+      <header class="panel__header">
+        <h1 class="panel__title">
+          {{x.naslov}} 
+          <hr>
+        </h1><p>{{x.timestamp}}</p>
+      </header>
+      <div class="panel__content">
+        {{x.opis}}
+      </div>
+      
+    </section>
+  </div>
+
+  <div class="example bg-2" *ngIf="x.prioritet === 2" >
+    <section class="panel">
+      <header class="panel__header">
+        <h1 class="panel__title">
+          {{x.naslov}}
+          <hr>
+        </h1><p>{{x.timestamp}}</p>
+      </header>
+      <div class="panel__content">
+        {{x.opis}}
+      </div>
+    </section>
+  </div>
+
+  <div class="example bg-3" *ngIf="x.prioritet === 3" >
+    <section class="panel">
+      <header class="panel__header">
+        <h1 class="panel__title">
+          {{x.naslov}}
+          <hr>
+        </h1><p>{{x.timestamp}}</p>
+      </header>
+      <div class="panel__content">
+        {{x.opis}}
+      </div>
+    </section>
+  </div>
+</div>
+      </div>
+    </div>
+
+</div>
+

@@ -33,7 +33,67 @@ public class User {
   @Size(max = 120)
   private String password;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @NotBlank
+  @Size(max = 100)
+  private String first_last_name;
+
+  @NotBlank
+  @Size(max = 100)
+  private String smjer;
+
+  @NotBlank
+  @Size(max = 100)
+  private Boolean redovan;
+  
+  @NotBlank
+  @Size(max = 100)
+  private String jmbag;
+
+  public String getJmbag() {
+	return jmbag;
+}
+
+public void setJmbag(String jmbag) {
+	this.jmbag = jmbag;
+}
+
+public String getSmjer() {
+	return smjer;
+}
+
+public void setSmjer(String smjer) {
+	this.smjer = smjer;
+}
+
+public Boolean getRedovan() {
+	return redovan;
+}
+
+public void setRedovan(Boolean redovan) {
+	this.redovan = redovan;
+}
+
+public String getSemestar() {
+	return semestar;
+}
+
+public void setSemestar(String semestar) {
+	this.semestar = semestar;
+}
+
+@NotBlank
+  @Size(max = 45)
+  private String semestar;
+
+  public String getFirst_last_name() {
+	return first_last_name;
+}
+
+public void setFirst_last_name(String first_last_name) {
+	this.first_last_name = first_last_name;
+}
+
+@ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -42,17 +102,23 @@ public class User {
   public User() {
   }
 
-  public User(String username, String email, String password) {
+  public User(String username, String email, String password,String first_last_name,String smjer,Boolean redovan,String semestar, String jmbag) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.first_last_name = first_last_name;
+    this.smjer = smjer;
+	this.redovan = redovan;
+	this.semestar = semestar;
+	this.jmbag = jmbag;
   }
 
   public Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+
+public void setId(Long id) {
     this.id = id;
   }
 

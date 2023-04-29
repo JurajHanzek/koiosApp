@@ -27,7 +27,7 @@ public class UnosOsobeController {
 	OsobaService iOsobaService;
 
 	@PostMapping("/spremi-osoba")
-	@PreAuthorize("hasRole('ROLE_USER') ")
+//	@PreAuthorize("hasRole('ROLE_USER') ")
 	public ResponseEntity<Osoba> addOsoba(@RequestBody Osoba newOsoba) throws ServerException {
 		Osoba osoba = iOsobaService.addOsoba(newOsoba);
 		if (osoba == null) {
@@ -39,7 +39,7 @@ public class UnosOsobeController {
 	}
 
 	@PutMapping("/azuriraj-osoba")
-	@PreAuthorize("hasRole('ROLE_USER') ")
+//	@PreAuthorize("hasRole('ROLE_USER') ")
 	public ResponseEntity<Osoba> azurirajOsoba(@RequestBody Osoba newOsoba) throws ServerException {
 		Osoba osoba = iOsobaService.azurirajOsoba(newOsoba);
 		if (osoba == null) {

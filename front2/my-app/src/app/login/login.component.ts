@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
     username: null,
     password: null
   };
+  name = '';
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -34,10 +35,10 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        this.name = this.tokenStorage.getUser().first_last_naem;
         // this.router.navigate(['/osobe']);
         this.reloadPage();
       },

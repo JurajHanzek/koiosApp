@@ -33,7 +33,6 @@ public class OsobaController {
 	}
 	
 	@GetMapping("/dohvati/osobu/{id}")
-	@PreAuthorize("hasRole('ROLE_USER') ")
 	public ResponseEntity<Osoba> dohvatiOsobuPoId( @PathVariable Long id) throws ServerException {
 		Osoba osoba = iOsobaService.dohvatiOsobuPoId(id);
 		if (osoba.equals(null)) {
@@ -45,7 +44,6 @@ public class OsobaController {
 	}
 	
 	@DeleteMapping("/izbrisi-osoba/{id}")
-	@PreAuthorize("hasRole('ROLE_USER') ")
 	public ResponseEntity<String> izbrisiOsoba(@PathVariable Long id) throws ServerException {
 		iOsobaService.izbrisiOsoba(id);
 		return new ResponseEntity<>("izbrisano", HttpStatus.OK);

@@ -5,6 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { OsobeComponent } from './osobe/osobe.component';
 import { RegisterComponent } from './register/register.component';
 import { UnosOsobeComponent } from './unos-osobe/unos-osobe.component';
+import { PostavkeComponent } from './postavke/postavke.component';
+import { NovaMolbaComponent } from './nova-molba/nova-molba.component';
+import { PregledMolbiComponent } from './pregled-molbi/pregled-molbi.component';
+import { NoviUpisComponent } from './novi-upis/novi-upis.component';
+import { PregledUpisaComponent } from './pregled-upisa/pregled-upisa.component';
+import { DokumentiComponent } from './dokumenti/dokumenti.component';
+import { NaslovnaComponent } from './naslovna/naslovna.component';
+import { ObavijestiComponent } from './obavijesti/obavijesti.component';
 
 const routes: Routes = [
   { path: 'osobe', component: OsobeComponent},
@@ -13,7 +21,15 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'kontakt', component: KontaktComponent },
   { path: '', redirectTo: 'osobe', pathMatch: 'full' },
-  { path: 'unos-osobe/:id', component: UnosOsobeComponent }
+  { path: 'unos-osobe/:id', component: UnosOsobeComponent },
+  { path: 'novaMolba', component: NovaMolbaComponent },
+  { path: 'pregledMolbi', component: PregledMolbiComponent },
+  { path: 'noviUpis', component: NoviUpisComponent },
+  { path: 'pregledUpisa', component: PregledUpisaComponent },
+  { path: 'dokumenti', component: DokumentiComponent },
+  { path: 'naslovna', component: NaslovnaComponent },
+  { path: 'obavijesti', component: ObavijestiComponent },
+  { path: 'postavke', component: PostavkeComponent }
 ];
 
 @NgModule({
