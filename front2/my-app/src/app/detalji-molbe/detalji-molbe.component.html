@@ -1,0 +1,59 @@
+<h1> {{molba.tip}}</h1>
+<h5>{{molba.status}}</h5>
+<button   onclick="document.getElementById('myModal').style.display='block'">Dodaj komentar</button>
+
+<br>
+<div style="padding-top: 15px;">
+<button type="button" class="btn btn-success" >Odobri</button>
+<button type="button" class="btn btn-danger" style="margin-left: 15px;">Odbij</button>
+<button type="button" class="btn btn-warning" style="margin-left: 15px;">Na razmatranju</button>
+</div>
+<div class="container-xxl "style="padding-top: 15px;" *ngFor="let x of komentar">
+</div>
+
+<div class="row">
+    <div class="col-sm-6" style="height: 700px;">
+        <iframe height ="100%" width="100%"src="https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp" title="Iframe Example"></iframe>
+    </div>
+    <div class="timeline col-sm-6" >
+        <div class="entry"*ngFor="let x of komentar">
+          <div class="title">
+            <h3>{{x.user}}</h3>
+            <p>{{x.datum}}</p>
+          </div>
+          <div class="body">
+            <p>{{x.komentar}}</p>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div id="myModal" class="modal login-box" style="margin: 0px auto;">
+    <div class="container-xxl py-9">
+        <div class="row">
+<div class=" bg-4" style="padding:2em">   
+    <form class="centriraj needs-validation"  ngNativeValidate novalidate (ngSubmit)="submit()" >
+      <div class="form-group">
+        <label for="ime" style="color: white;">Unos novog komentara</label>
+        <input type="text" class="form-control" name="ime" placeholder="Unesite komentar" required [(ngModel)]="kom.komentar"> >
+        <div class="invalid-feedback">Unesite komentar.</div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="prioritet" style="color: white;">Prioritet</label>
+        <select class="form-control" name="prioritet" required  [(ngModel)]="oba.prioritet">
+          <option value="">Odaberite prioritet</option>
+          <option value=3>Nizak</option>
+          <option value=2>Srednji</option>
+          <option value=1>Visok</option>
+        </select>
+        <div class="invalid-feedback">Odaberite prioritet.</div>
+      </div> -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary"  onclick="document.getElementById('myModal').style.display='none'">Spremi</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"  onclick="document.getElementById('myModal').style.display='none'">Zatvori</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>

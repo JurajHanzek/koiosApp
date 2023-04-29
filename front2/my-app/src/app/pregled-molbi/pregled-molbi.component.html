@@ -1,1 +1,36 @@
-<p>pregled-molbi works!</p>
+
+<div style="margin-left: -4%; ">
+    <div class="container-xxl py-9">
+        <div class="row">
+    <div >
+      <label>Pretraga po tip-u:  </label>
+      <input [(ngModel)]="mymodelIme"  (input)="valuechangeIme($event)" type="text" placeholder="Pretraga... " style="margin-left: 5px;">
+      <span style="display:none">{{mymodelIme}}</span>
+      <div class="search"></div><br>
+    </div>
+  <table id="htmlData"class="table table-hover" style="text-align:center" #TABLE>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tip</th>
+        <th scope="col">Razlog</th>
+        <th scope="col">Status</th>
+        <th scope="col">datum</th>
+        <th scope="col">Korisnik</th>
+        <th scope="col">-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of molba">
+        <th scope="row" >{{ x.id }}</th>
+        <td>{{ x.tip }}</td>
+        <td>{{ x.objasnjenje}}</td>
+        <td>{{ x.status }}</td>
+        <td>{{ x.datum }}</td>
+        <td>{{ x.user }}</td>
+        <td  style="color: #0d6efd; cursor: pointer;"  [routerLink]="['/detalji-molbe', x.id]" >Detalji</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div></div>
+

@@ -2,30 +2,37 @@
 <div style="margin-left: -4%; ">
     <div class="container-xxl py-9">
         <div class="row">
-<div class=" bg-4" style="padding:2em">           
-<h1  >Obavijesti studentske referade</h1>
-<p><span class="box red"></span> Važno</p>
-<p><span class="box yellow"></span>Bitno</p>
-<p><span class="box green"></span>Informativno</p>
-<button *ngIf="roles[0] == 'REFERADA'">DODAJ NOVOST</button>
-<button class="button" onclick="document.getElementById('myModal').style.display='block'">DODAJ NOVOST</button>
+<div class=" bg-4" style="padding:2em">     
+
+
+<!-- <a  onclick="document.getElementById('myModal').style.display='block'" class="button">
+    <div class="button__line"></div>
+    <div class="button__line"></div>
+    <span class="button__text">ENTRY</span>
+    <div class="button__drow1"></div>
+    <div class="button__drow2"></div>
+  </a> -->
+  <button   onclick="document.getElementById('myModal').style.display='block'" *ngIf="roles[0] == 'REFERADA'">DODAJ NOVOST</button>
+
 </div> 
 
-
-<div id="myModal" class="modal">
+<div id="myModal" class="modal login-box" style="margin: 0px auto;">
+    <div class="container-xxl py-9">
+        <div class="row">
+<div class=" bg-4" style="padding:2em">   
     <form class="centriraj needs-validation" (ngSubmit)="submit()" ngNativeValidate novalidate>
       <div class="form-group">
-        <label for="ime">Unos nove obavijesti</label>
+        <label for="ime" style="color: white;">Unos nove obavijesti</label>
         <input type="text" class="form-control" name="ime" placeholder="Unesite naslov" required  [(ngModel)]="oba.naslov">
         <div class="invalid-feedback">Unesite naslov.</div>
       </div>
       <div class="form-group">
-        <label for="prezime">Opis</label>
+        <label for="prezime" style="color: white;">Opis</label>
         <textarea class="form-control" name="prezime" placeholder="Unesite opis" rows="3" required  [(ngModel)]="oba.opis"></textarea>
         <div class="invalid-feedback">Unesite opis.</div>
       </div>
       <div class="form-group">
-        <label for="prioritet">Prioritet</label>
+        <label for="prioritet" style="color: white;">Prioritet</label>
         <select class="form-control" name="prioritet" required  [(ngModel)]="oba.prioritet">
           <option value="">Odaberite prioritet</option>
           <option value=3>Nizak</option>
@@ -40,54 +47,66 @@
       </div>
     </form>
   </div>
+</div>
+</div>
+</div>
 
+  <h2>Obavijesti studentske referade | <a href="www.moj.tvz.hr" target="_blank">Moj.tvz</a></h2>
+  <h4><span  class="dot1"> </span>Važno<span  class="dot2"> </span>Bitno<span  class="dot3"> </span>Informativno</h4>
+  <h4>  <button style="width: 200PX;"  class="custom-btn btn-4" onclick="document.getElementById('myModal').style.display='block'" *ngIf="roles[0] == 'STUDENT'">DODAJ NOVOST</button>
+  </h4>
 
 <div *ngFor="let x of obavijesti" style="margin-top: -15px;">
-  <div class="example bg-1" *ngIf="x.prioritet === 1" >
-    <section class="panel">
-      <header class="panel__header">
-        <h1 class="panel__title">
-          {{x.naslov}} 
-          <hr>
-        </h1><p>{{x.timestamp}}</p>
-      </header>
-      <div class="panel__content">
-        {{x.opis}}
+    <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1"   *ngIf="x.prioritet === 1">
+        <div class="timeline__event__icon">
+          <div class="timeline__event__date" >
+            {{x.timestamp}}
+          </div>
+        </div>
+        <div class="timeline__event__content ">
+          <div class="timeline__event__title">
+            {{x.naslov}}
+          </div>
+          <div class="timeline__event__description"  style="width: 800px;">
+            <p> {{x.opis}}</p>
+          </div>
+        </div>
       </div>
-      
-    </section>
-  </div>
-
-  <div class="example bg-2" *ngIf="x.prioritet === 2" >
-    <section class="panel">
-      <header class="panel__header">
-        <h1 class="panel__title">
+    
+      <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type2"  *ngIf="x.prioritet === 2">
+        <div class="timeline__event__icon">
+        <div class="timeline__event__date" >
+          {{x.timestamp}}
+        </div>
+    </div>
+      <div class="timeline__event__content ">
+        <div class="timeline__event__title">
           {{x.naslov}}
-          <hr>
-        </h1><p>{{x.timestamp}}</p>
-      </header>
-      <div class="panel__content">
-        {{x.opis}}
+        </div>
+        <div class="timeline__event__description" style="width: 800px;">
+          <p> {{x.opis}}</p>
+        </div>
       </div>
-    </section>
-  </div>
+    </div>
 
-  <div class="example bg-3" *ngIf="x.prioritet === 3" >
-    <section class="panel">
-      <header class="panel__header">
-        <h1 class="panel__title">
+    <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type3"  *ngIf="x.prioritet === 3">
+        <div class="timeline__event__icon">
+        <div class="timeline__event__date">
+          {{x.timestamp}}
+        </div>
+    </div>
+      <div class="timeline__event__content ">
+        <div class="timeline__event__title">
           {{x.naslov}}
-          <hr>
-        </h1><p>{{x.timestamp}}</p>
-      </header>
-      <div class="panel__content">
-        {{x.opis}}
+        </div>
+        <div class="timeline__event__description" style="width: 800px;">
+          <p> {{x.opis}}</p>
+        </div>
       </div>
-    </section>
-  </div>
+    </div>
+
 </div>
       </div>
     </div>
 
 </div>
-

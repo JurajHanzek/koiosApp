@@ -1,7 +1,9 @@
 export interface Komentar {
     id:number;
     komentar: string;
-    userId: string;
-    sourceId: string;
+    userId: number;
+    sourceId: number;
     isMolba: boolean;
+    datum: string;
+    user:string;
 }

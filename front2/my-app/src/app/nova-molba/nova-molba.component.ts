@@ -17,12 +17,12 @@ export class NovaMolbaComponent {
   kom: Komentar= {} as Komentar;
   isLoggedIn = false;
   roles: string[] = [];
-
+  userId :number;
   constructor(
     private tokenStorageService: TokenStorageService,private renderer: Renderer2,
     private molbaService : MolbaService,
   ) { 
-    
+    this.userId=0;
    }
 
    ngOnInit(): void {
@@ -31,19 +31,26 @@ export class NovaMolbaComponent {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      this.userId= user.id;
+      this.molba.userId = this.userId;
     }
   }
 
   submit(){ 
+    console.log("ased")
     this.molbaService.spremiMolbu(this.molba).subscribe(
-    () => {
+      (response: Komentar)  => {
       Swal.fire({
         icon: 'success',
         title: 'Uspješno spremljeno!',
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: 'Ok',
-      }).then(() =>{
+      }).then(() =>{ 
+        this.kom.isMolba=true;
+        this.kom.userId=this.userId;
+        this.kom.sourceId=response.id;
+        this.molbaService.spremiKomentar(this.kom).subscribe()
       })
     },
     (error: HttpErrorResponse) => {
@@ -55,26 +62,7 @@ export class NovaMolbaComponent {
       })
     }
   )
-  this.molbaService.spremiKomentar(this.kom).subscribe(
-    () => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Uspješno spremljeno!',
-        showDenyButton: false,
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-      }).then(() =>{
-      })
-    },
-    (error: HttpErrorResponse) => {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Neuspješno spremanje',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
-    }
-  )
+ 
 
 
 }

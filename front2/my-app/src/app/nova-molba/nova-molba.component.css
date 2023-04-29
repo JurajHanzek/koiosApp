@@ -167,4 +167,10 @@ html {
       bottom: 100%;
     }
   }
-  
+  button {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    /*border is optional*/
+    /* border-bottom:1px solid #444;  */
+  }

@@ -21,6 +21,7 @@ import { PregledUpisaComponent } from './pregled-upisa/pregled-upisa.component';
 import { DokumentiComponent } from './dokumenti/dokumenti.component';
 import { NaslovnaComponent } from './naslovna/naslovna.component';
 import { ObavijestiComponent } from './obavijesti/obavijesti.component';
+import { DetaljiMolbeComponent } from './detalji-molbe/detalji-molbe.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ObavijestiComponent } from './obavijesti/obavijesti.component';
     DokumentiComponent,
     NaslovnaComponent,
     ObavijestiComponent,
+    DetaljiMolbeComponent,
   ],
   imports: [
     BrowserModule,

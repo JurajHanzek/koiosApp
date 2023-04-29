@@ -13,6 +13,7 @@ import { PregledUpisaComponent } from './pregled-upisa/pregled-upisa.component';
 import { DokumentiComponent } from './dokumenti/dokumenti.component';
 import { NaslovnaComponent } from './naslovna/naslovna.component';
 import { ObavijestiComponent } from './obavijesti/obavijesti.component';
+import { DetaljiMolbeComponent } from './detalji-molbe/detalji-molbe.component';
 
 const routes: Routes = [
   { path: 'osobe', component: OsobeComponent},
@@ -29,8 +30,10 @@ const routes: Routes = [
   { path: 'dokumenti', component: DokumentiComponent },
   { path: 'naslovna', component: NaslovnaComponent },
   { path: 'obavijesti', component: ObavijestiComponent },
-  { path: 'postavke', component: PostavkeComponent }
-];
+  { path: 'postavke', component: PostavkeComponent },
+  { path: 'detalji-molbe/:id', component: DetaljiMolbeComponent },
+
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

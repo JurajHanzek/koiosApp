@@ -3,4 +3,7 @@ export interface Molba {
     tip: string;
     objasnjenje: string;
     status: string;
+    userId:number;
+    datum:string;
+    user:string;
 }
