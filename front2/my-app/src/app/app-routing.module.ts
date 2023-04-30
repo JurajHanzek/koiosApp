@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'novaMolba', component: NovaMolbaComponent },
   { path: 'pregledMolbi', component: PregledMolbiComponent },
   { path: 'noviUpis', component: NoviUpisComponent },
-  { path: 'pregledUpisa', component: PregledUpisaComponent },
+  { path: 'pregledUpisa/:id', component: PregledUpisaComponent },
   { path: 'dokumenti', component: DokumentiComponent },
   { path: 'naslovna', component: NaslovnaComponent },
   { path: 'obavijesti', component: ObavijestiComponent },

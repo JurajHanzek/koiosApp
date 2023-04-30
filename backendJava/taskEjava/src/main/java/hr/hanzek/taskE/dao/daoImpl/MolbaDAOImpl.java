@@ -83,14 +83,14 @@ public class MolbaDAOImpl implements MolbaDAO{
 
 	@Override
 	public List<Komentar> dohvatiKomentareMolbe(Long id) {
-		String sql = "SELECT * FROM komentar WHERE sourceId = ?";
+		String sql = "SELECT * FROM komentar WHERE sourceId = ? ORDER BY id DESC";
 		 List<Komentar> temp = new ArrayList<>();
 		 List<Komentar> temp2 = new ArrayList<>();
 		
 		 temp= iJdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Komentar.class),id);
 			for (Komentar x : temp) 
 			{ 
-				User as=(iJdbcTemplate.queryForObject("SELECT first_last_name FROM users WHERE id = ?",
+				User as=(iJdbcTemplate.queryForObject("SELECT first_last_name FROM users WHERE id = ? ",
 						BeanPropertyRowMapper.newInstance(User.class),x.getUserId()));
 				x.setUser(as.getFirst_last_name());
 				temp2.add(x);
@@ -102,6 +102,13 @@ public class MolbaDAOImpl implements MolbaDAO{
 	public User dohvatiUsera(Long id) {
 		String sql = "SELECT id,first_last_name FROM users WHERE id = ?";
 		return iJdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(User.class),id);
+	}
+
+	@Override
+	public Molba updateMolba(Molba m) {
+		String sql3 = "UPDATE molba set status=? where id = ?";
+		 iJdbcTemplate.update(sql3,m.getStatus(), m.getId());
+		return m;
 	}
 	
 

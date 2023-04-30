@@ -52,4 +52,9 @@ public class MolbaServiceImpl implements MolbaService{
 		return iMolbaDAO.dohvatiUsera(id);
 	}
 
+	@Override
+	public Molba updateMolba(Molba m) {
+		return iMolbaDAO.updateMolba(m);
+	}
+
 }

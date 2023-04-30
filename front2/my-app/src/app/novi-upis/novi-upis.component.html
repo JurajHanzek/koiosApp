@@ -1,1 +1,54 @@
-<p>novi-upis works!</p>
+
+<h1>Trenutačno ste upisani u {{semestar}}. semestar</h1>
+<h3>Ako su Vam upisane ocjene u studomatu nastavite sa upisom u novi semestar.</h3>
+
+<div class="wrapper" *ngIf="!ifExists">
+	<h1>Stručni studij računarstva </h1><hr>
+    <button style="margin-left: 20px;" (click)="upisi()">Upisi me</button>
+	<div class="grid">
+		<form action=""  style="background-color: rgb(241, 237, 237);">
+			<fieldset>
+				<legend>Odaberite predmete 5.semestra</legend> 
+                <p>(+) obvezni</p>
+                <div *ngFor="let x of predmeti">
+                    <div class="form__group"  *ngIf="x.obvezni">
+
+                        <input type="checkbox" id="berries_1" value="strawberries" name="berries"  (click)="add(x.id)">
+                        <label for="berries_1">{{x.naziv}} (+)</label>
+                            <i class="fa fa-info-circle" aria-hidden="true" (click)="inf(x.id)"></i>
+                    </div>
+                    <div class="form__group" *ngIf="!x.obvezni">
+
+                        <input type="checkbox" id="berries_1" value="strawberries" name="berries"  (click)="add(x.id)">
+                        <label for="berries_1">{{x.naziv}} ?</label>   <i class="fa fa-info-circle" aria-hidden="true" (click)="inf(x.id)"></i>
+                    </div>
+                </div>
+
+			</fieldset>
+			<fieldset>
+				<legend>Odaberite način plačanja upisa</legend>
+				<div class="form__group">
+					<input type="radio" id="delivery_1" value="collect" name="delivery">
+					<label for="delivery_1">Kartica</label>
+				</div>
+                <div class="form__group">
+					<input type="radio" id="delivery_1" value="collect" name="delivery">
+					<label for="delivery_1">Uplatnica</label>
+				</div>
+			</fieldset>
+
+		</form>
+        <form action="" style="background-color: rgb(241, 237, 237); color:black">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <p><strong>Predmet:</strong> {{info.naziv}}</p>
+                <p><strong>Nositelj:</strong> {{info.nositelj}}</p>
+                <p><strong>Broj ECTS-a:</strong> {{info.ects}}</p>
+                <p><strong>Semestar:</strong> {{info.semestar}}</p>
+              </div>
+		</form>
+</div>
+</div>
+<div class="wrapper" *ngIf="ifExists">
+    Upis je u tijeku. 
+    <a  [routerLink]="['/pregledUpisa', upis.id]">Pregled upisa</a>
+</div>

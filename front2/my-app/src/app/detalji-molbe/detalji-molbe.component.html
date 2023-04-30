@@ -1,19 +1,30 @@
-<h1> {{molba.tip}}</h1>
-<h5>{{molba.status}}</h5>
+
+<h1> {{molba.tip}}
+    <span *ngIf="molba.status === 'ODOBRENO'" style="color: #00f932; padding: 5px; font-size: 15px;">({{ molba.status }})</span>
+        <span *ngIf="molba.status === 'ZAHTJEV POSLAN'" style="color: #0d6efd;  padding: 5px; font-size: 15px;">({{ molba.status }})</span>
+        <span *ngIf="molba.status === 'ODBIJENO'" style="color: #fd0d0d;  padding: 5px; font-size: 15px;">({{ molba.status }})</span>
+        <span *ngIf="molba.status === 'NA_RAZMATRANJU'" style="color: #788010;  padding: 5px; font-size: 15px;">({{ molba.status }})</span>
+
+
+</h1><hr>
+<!-- <td *ngIf="molba.status === 'ODOBRENO'" style="background-color: #00f932; padding: 5px;">{{ molba.status }}</td> -->
+
 <button   onclick="document.getElementById('myModal').style.display='block'">Dodaj komentar</button>
 
 <br>
 <div style="padding-top: 15px;">
-<button type="button" class="btn btn-success" >Odobri</button>
-<button type="button" class="btn btn-danger" style="margin-left: 15px;">Odbij</button>
-<button type="button" class="btn btn-warning" style="margin-left: 15px;">Na razmatranju</button>
+<button type="button" class="btn btn-success" (click)="status('ODOBRENO')">Odobri</button>
+<button type="button" class="btn btn-danger" (click)="status('ODBIJENO')" style="margin-left: 15px;">Odbij</button>
+<button type="button" class="btn btn-warning"  (click)="status('NA_RAZMATRANJU')"style="margin-left: 15px;">Na razmatranju</button>
 </div>
 <div class="container-xxl "style="padding-top: 15px;" *ngFor="let x of komentar">
 </div>
 
 <div class="row">
     <div class="col-sm-6" style="height: 700px;">
-        <iframe height ="100%" width="100%"src="https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp" title="Iframe Example"></iframe>
+        <!-- <iframe height ="100%" width="90%"src="https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp" title="Iframe Example"></iframe> -->
+        <iframe height ="100%" width="90%" #iframe title="Iframe Example"></iframe>
+        <!-- <iframe height ="100%" width="90%" [src]="url" title="Iframe Example"></iframe> -->
     </div>
     <div class="timeline col-sm-6" >
         <div class="entry"*ngFor="let x of komentar">

@@ -57,13 +57,21 @@ export class PregledMolbiComponent  implements OnInit {
  
   
   }
+
+
+
+
+
+
+
+
   redirect(id:string){
 
   }
 
   valuechangeIme(searchValue: any): void {  
     this.mymodelIme = this.mymodelIme.toLowerCase();
-    this.molba = this.molbaTemp.filter((s: { tip: string; }) => s.tip.toLowerCase().includes(this.mymodelIme));
+    this.molba = this.molbaTemp.filter((s: { tip: string; }) => s.tip.toLowerCase().includes(this.mymodelIme.toLowerCase()));
   }
 
     public dohvatiMolbeUsera(id:number): void{

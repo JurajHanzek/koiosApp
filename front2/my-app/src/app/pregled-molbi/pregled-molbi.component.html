@@ -25,7 +25,10 @@
         <th scope="row" >{{ x.id }}</th>
         <td>{{ x.tip }}</td>
         <td>{{ x.objasnjenje}}</td>
-        <td>{{ x.status }}</td>
+        <td *ngIf="x.status === 'ODOBRENO'" style="color: #00f932;">{{ x.status }}</td>
+        <td *ngIf="x.status === 'ZAHTJEV POSLAN'" style="color: #0d6efd;">{{ x.status }}</td>
+        <td *ngIf="x.status === 'ODBIJENO'" style="color: #fd0d0d;">{{ x.status }}</td>
+        <td *ngIf="x.status === 'NA_RAZMATRANJU'" style="color: #828737;">{{ x.status }}</td>
         <td>{{ x.datum }}</td>
         <td>{{ x.user }}</td>
         <td  style="color: #0d6efd; cursor: pointer;"  [routerLink]="['/detalji-molbe', x.id]" >Detalji</td>

@@ -33,7 +33,7 @@ body * {
 }
 .timeline {
     /* width: 100%; */
-    /* max-width: 800px; */
+    max-width: 800px;
     background: #fff;
     padding: 100px 50px;
     position: relative;

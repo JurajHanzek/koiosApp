@@ -39,6 +39,20 @@ public class MolbeController {
 		}
 
 	}
+	
+	@PostMapping("/update")
+//	@PreAuthorize("hasRole('ROLE_USER') ")
+	public ResponseEntity<Molba> updateMolba(@RequestBody Molba m) throws ServerException {
+		Molba oba = iMolbaService.updateMolba(m);
+		if (oba == null) {
+			throw new ServerException("Neuspješno spremanje podataka.");
+		} else {
+			return new ResponseEntity<>(oba, HttpStatus.CREATED);
+		}
+
+	}
+	
+	
 	@PostMapping("/spremi-komentar")
 //	@PreAuthorize("hasRole('ROLE_USER') ")
 	public ResponseEntity<Komentar> spremiKomentar(@RequestBody Komentar m) throws ServerException {

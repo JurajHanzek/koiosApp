@@ -42,4 +42,7 @@ export class MolbaService {
   public dohvatiUsera(id:number): Observable<User>{
     return this.http.get<User>(`${this.api}/molba/get-user/${id}`)
   }
+  setStatus(oba: Molba): Observable<any> {
+    return this.http.post(`${this.api}/molba/update` ,oba , httpOptions);
+  }
 }

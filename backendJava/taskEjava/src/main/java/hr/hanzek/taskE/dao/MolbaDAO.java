@@ -22,4 +22,6 @@ public interface MolbaDAO {
 
 	User dohvatiUsera(Long id);
 
+	Molba updateMolba(Molba m);
+
 }
