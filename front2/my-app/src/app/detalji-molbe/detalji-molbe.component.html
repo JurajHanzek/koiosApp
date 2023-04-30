@@ -12,7 +12,7 @@
 <button   onclick="document.getElementById('myModal').style.display='block'">Dodaj komentar</button>
 
 <br>
-<div style="padding-top: 15px;">
+<div style="padding-top: 15px;" *ngIf="roles[0]=='REFERADA'">
 <button type="button" class="btn btn-success" (click)="status('ODOBRENO')">Odobri</button>
 <button type="button" class="btn btn-danger" (click)="status('ODBIJENO')" style="margin-left: 15px;">Odbij</button>
 <button type="button" class="btn btn-warning"  (click)="status('NA_RAZMATRANJU')"style="margin-left: 15px;">Na razmatranju</button>

@@ -46,11 +46,12 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <span class="nav-item" [routerLinkActive]="['active']">
+                                <span class="nav-item" [routerLinkActive]="['active']" *ngIf="roles[0] == 'STUDENT'">
                                     <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['novaMolba']" >Izrada molbe</a>
                                   </span>
                                   <span class="nav-item" [routerLinkActive]="['active']">
-                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['pregledMolbi']" >Moje molbe</a>
+                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['pregledMolbi']" *ngIf="roles[0] == 'STUDENT'">Moje molbe</a>
+                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['pregledMolbi']" *ngIf="roles[0] == 'REFERADA'">Pregled molbi</a>
                                   </span>
                             </nav>
                         </div>
@@ -62,18 +63,18 @@
                     </div>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <span class="nav-item" [routerLinkActive]="['active']">
-                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['noviUpis']" >Novi upis</a>
+                                <span class="nav-item" [routerLinkActive]="['active']" *ngIf="roles[0] == 'STUDENT'">
+                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['noviUpis']" >Moj upis</a>
                                   </span>
                                   <span class="nav-item" [routerLinkActive]="['active']">
-                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['pregledUpisa']" >Pregled upisa</a>
+                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['upisi']" >Svi zahtjevi za upis</a>
                                   </span>
                             </nav>
                         </div>
                         <div *ngIf="isLoggedIn">
                         <div class="sb-sidenav-menu-heading">Dodatno</div>
                         <span class="nav-item" [routerLinkActive]="['active']">
-                            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['dokumenti']" ><i class="fa-solid fa-file"></i> Moji dokumenti</a>
+                            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['kontakt']" ><i class="fa-solid fa-file"></i>O aplikaciji</a>
                           </span>
                     </div> 
                    

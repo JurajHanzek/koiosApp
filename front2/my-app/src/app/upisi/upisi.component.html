@@ -1,0 +1,39 @@
+
+<div style="margin-left: -4%; ">
+    <div class="container-xxl py-9">
+        <div class="row">
+    <div >
+      <label>Pretraga po tip-u:  </label>
+      <input [(ngModel)]="mymodelIme"  (input)="valuechangeIme($event)" type="text" placeholder="Pretraga... " style="margin-left: 5px;">
+      <span style="display:none">{{mymodelIme}}</span>
+      <div class="search"></div><br>
+    </div>
+  <table id="htmlData"class="table table-hover" style="text-align:center" #TABLE>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Student</th>
+        <th scope="col">Semestar</th>
+        <th scope="col">Status</th>
+        <th scope="col">Datum</th>
+        <th scope="col">-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of upis">
+        <th scope="row" >{{ x.id }}</th>
+        <td>{{ x.user }}</td>
+        <td>{{ x.semestar}}</td>
+        <td *ngIf="x.status === 'USPJESAN_UPIS'" style="color: #00f932; padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td *ngIf="x.status === 'PREDAN_ZAHTJEV'" style="color: #0d6efd;  padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td *ngIf="x.status === 'ODBIJENO'" style="color: #fd0d0d;  padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td *ngIf="x.status === 'U_OBRADI'" style="color: #788010;  padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td *ngIf="x.status === 'ODBIJEN_UPIS'" style="color: #fd0d0d;  padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td *ngIf="x.status === 'CEKANJE_POTPISA'" style="color: #103d80;  padding: 5px; font-size: 15px;">({{ x.status }})</td>
+        <td>{{ x.datum }}</td>
+        <td  style="color: #0d6efd; cursor: pointer;"  [routerLink]="['/pregledUpisa', x.id]" >Detalji</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div></div>
+

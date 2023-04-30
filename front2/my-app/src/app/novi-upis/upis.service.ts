@@ -26,6 +26,9 @@ export class UpisService {
   public dohvatiUpis(id:number): Observable<Upis>{
     return this.http.get<Upis>(`${this.api}/upis/student/${id}`)
   }
+  public dohvatiUpise(): Observable<Upis[]>{
+    return this.http.get<Upis[]>(`${this.api}/upis/get`)
+  }
 
   spremiUpis(oba: Predmet[]): Observable<any> {
     return this.http.post(`${this.api}/upis/spremi` ,oba , httpOptions);

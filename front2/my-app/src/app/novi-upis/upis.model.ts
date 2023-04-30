@@ -4,4 +4,5 @@ export interface Upis {
     semestar: number;
     status: string;
     user:string;
+    datum:string;
 }

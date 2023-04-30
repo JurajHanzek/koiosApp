@@ -13,4 +13,8 @@ public interface UpisService {
 
 	Upis dohvatiUpisPoId(Long id);
 
+	List<Predmet> dohvatiPredmetePoUserId(Long id);
+
+	List<Upis> dohvatiUpise();
+
 }

@@ -31,4 +31,14 @@ public class UpisServiceImpl implements UpisService{
 		return iUpisDAO.dohvatiUpisPoId(id);
 	}
 
+	@Override
+	public List<Predmet> dohvatiPredmetePoUserId(Long id) {
+		return iUpisDAO.dohvatiPredmetePoUserId(id);
+	}
+
+	@Override
+	public List<Upis> dohvatiUpise() {
+		return iUpisDAO.dohvatiUpise();
+	}
+
 }

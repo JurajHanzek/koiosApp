@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Molba } from './molba.model';
 import { Komentar } from './komentar.model';
 import { User } from '../user.model';
+import { Predmet } from '../novi-upis/predmet.model';
 
 
 const httpOptions = {
@@ -45,4 +46,9 @@ export class MolbaService {
   setStatus(oba: Molba): Observable<any> {
     return this.http.post(`${this.api}/molba/update` ,oba , httpOptions);
   }
+  public dohvatiPredmeteUsera(id:number): Observable<Predmet[]>{
+    return this.http.get<Predmet[]>(`${this.api}/upis/predmeti/user/${id}`)
+  }
 }
+
+

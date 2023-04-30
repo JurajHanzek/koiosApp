@@ -14,6 +14,7 @@ import { DokumentiComponent } from './dokumenti/dokumenti.component';
 import { NaslovnaComponent } from './naslovna/naslovna.component';
 import { ObavijestiComponent } from './obavijesti/obavijesti.component';
 import { DetaljiMolbeComponent } from './detalji-molbe/detalji-molbe.component';
+import { UpisiComponent } from './upisi/upisi.component';
 
 const routes: Routes = [
   { path: 'osobe', component: OsobeComponent},
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path: 'obavijesti', component: ObavijestiComponent },
   { path: 'postavke', component: PostavkeComponent },
   { path: 'detalji-molbe/:id', component: DetaljiMolbeComponent },
-
+  { path: 'upisi', component: UpisiComponent },
   ];
 
 @NgModule({

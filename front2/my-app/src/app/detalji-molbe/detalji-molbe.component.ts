@@ -28,6 +28,7 @@ export class DetaljiMolbeComponent implements OnInit{
   kom: Komentar = {} as Komentar;
   us;
   url=''
+  roles: string[] = [];
 
   ngOnInit(): void {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
@@ -47,6 +48,7 @@ export class DetaljiMolbeComponent implements OnInit{
   });
   const user = this.tokenStorageService.getUser();
   this.us = user.id;
+  this.roles = this.tokenStorageService.getUser().roles;
 }
    constructor(
     private molbaService:MolbaService,
