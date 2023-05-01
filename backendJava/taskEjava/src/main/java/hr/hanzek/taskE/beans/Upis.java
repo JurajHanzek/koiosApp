@@ -1,9 +1,11 @@
 package hr.hanzek.taskE.beans;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 @Data
-public class Upis {
+public class Upis implements Serializable{
 	
 	private Long id;
 	private Long userId;
@@ -11,6 +13,5 @@ public class Upis {
 	private String status;
 	private String datum;
 	private String user;
-	
-
+	private String potpis;
 }

@@ -67,7 +67,7 @@
                                     <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['noviUpis']" >Moj upis</a>
                                   </span>
                                   <span class="nav-item" [routerLinkActive]="['active']">
-                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['upisi']" >Svi zahtjevi za upis</a>
+                                    <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['upisi']" *ngIf="roles[0] == 'REFERADA'">Svi zahtjevi za upis</a>
                                   </span>
                             </nav>
                         </div>

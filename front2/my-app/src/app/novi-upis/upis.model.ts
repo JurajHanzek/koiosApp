@@ -5,4 +5,5 @@ export interface Upis {
     status: string;
     user:string;
     datum:string;
+    potpis:string;
 }

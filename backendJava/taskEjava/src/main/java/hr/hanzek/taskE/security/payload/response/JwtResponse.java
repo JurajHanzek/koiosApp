@@ -14,7 +14,8 @@ public class JwtResponse {
   private String semestar;
   private Boolean redovan;
   private String jmbag;
-  public JwtResponse(String accessToken, Long id, String username, String email,String name, List<String> roles,String smjer,Boolean redovan,String semestar, String jmbag) {
+  private String publicKey;
+  public JwtResponse(String accessToken, Long id, String username, String email,String name, List<String> roles,String smjer,Boolean redovan,String semestar, String jmbag, String publicKey) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
@@ -25,6 +26,7 @@ public class JwtResponse {
     this.semestar = semestar;
     this.redovan = redovan;
     this.jmbag=jmbag;
+    this.publicKey=publicKey;
   }
   
   
@@ -121,5 +123,17 @@ public String getJmbag() {
 
 public void setJmbag(String jmbag) {
 	this.jmbag = jmbag;
+}
+
+
+
+public String getPublicKey() {
+	return publicKey;
+}
+
+
+
+public void setPublicKey(String publicKey) {
+	this.publicKey = publicKey;
 }
 }

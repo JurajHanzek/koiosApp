@@ -41,13 +41,13 @@ public class User {
   @Size(max = 100)
   private String smjer;
 
-  @NotBlank
-  @Size(max = 100)
   private Boolean redovan;
   
   @NotBlank
   @Size(max = 100)
   private String jmbag;
+  
+  private String publicKey;
 
   public String getJmbag() {
 	return jmbag;
@@ -102,7 +102,7 @@ public void setFirst_last_name(String first_last_name) {
   public User() {
   }
 
-  public User(String username, String email, String password,String first_last_name,String smjer,Boolean redovan,String semestar, String jmbag) {
+  public User(String username, String email, String password,String first_last_name,String smjer,Boolean redovan,String semestar, String jmbag, String publicKey) {
     this.username = username;
     this.email = email;
     this.password = password;
@@ -111,6 +111,7 @@ public void setFirst_last_name(String first_last_name) {
 	this.redovan = redovan;
 	this.semestar = semestar;
 	this.jmbag = jmbag;
+	this.publicKey=publicKey;
   }
 
   public Long getId() {
@@ -153,4 +154,12 @@ public void setId(Long id) {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+public String getPublicKey() {
+	return publicKey;
+}
+
+public void setPublicKey(String publicKey) {
+	this.publicKey = publicKey;
+}
 }

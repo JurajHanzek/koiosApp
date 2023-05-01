@@ -75,7 +75,8 @@ public class AuthController {
                          userDetails.getSmjer(),
                          userDetails.getRedovan(),
                          userDetails.getSemestar(),
-                         userDetails.getJmbag()
+                         userDetails.getJmbag(),
+                         userDetails.getPublicKey()
                          ));
   }
 
@@ -96,7 +97,7 @@ public class AuthController {
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), 
                signUpRequest.getEmail(),
-               encoder.encode(signUpRequest.getPassword()), "", null, null, null, null
+               encoder.encode(signUpRequest.getPassword()), "-", "referada", false, "-", "-","-"
                );
 
     Set<String> strRoles = signUpRequest.getRole();

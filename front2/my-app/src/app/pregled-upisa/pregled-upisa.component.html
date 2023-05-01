@@ -2,19 +2,24 @@
     <span *ngIf="upis.status === 'USPJESAN_UPIS'" style="color: #00f932; padding: 5px; font-size: 15px;">({{ upis.status }})</span>
     <span *ngIf="upis.status === 'PREDAN_ZAHTJEV'" style="color: #0d6efd;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
     <span *ngIf="upis.status === 'ODBIJENO'" style="color: #fd0d0d;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
-    <span *ngIf="upis.status === 'U_OBRADI'" style="color: #788010;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
+    <span *ngIf="upis.status === 'POTPISANO'" style="color: #788010;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
     <span *ngIf="upis.status === 'ODBIJEN_UPIS'" style="color: #fd0d0d;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
     <span *ngIf="upis.status === 'CEKANJE_POTPISA'" style="color: #103d80;  padding: 5px; font-size: 15px;">({{ upis.status }})</span>
 
 
 </h1><hr>
 <!-- <td *ngIf="molba.status === 'ODOBRENO'" style="background-color: #00f932; padding: 5px;">{{ molba.status }}</td> -->
-
 <button   onclick="document.getElementById('myModal').style.display='block'">Dodaj komentar</button>
 
 <br>
 <div style="padding-top: 15px;">
-<!-- <button type="button" class="btn btn-success" (click)="status('ODOBRENO')">Odobri</button> -->
+<button type="button" class="btn btn-success" (click)="status('CEKANJE_POTPISA')" *ngIf="upis.status === 'PREDAN_ZAHTJEV' && roles[0]=='REFERADA' " >Napravi izračun i šalji na potpis</button>
+<button type="button" class="btn btn-success" (click)="potpisi()" *ngIf="upis.status === 'CEKANJE_POTPISA' && roles[0]=='STUDENT' " >Potpiši dokument i pošalji referadi </button>
+<button type="button" class="btn btn-success" (click)="validiraj()" *ngIf="upis.status === 'POTPISANO' && roles[0]=='REFERADA' " >Validiraj potpis i završi upis</button>
+<!-- <button type="button" class="btn btn-success" (click)="validiraj()" >Validiraj potpis i završi upis</button> -->
+
+<span  *ngIf="upis.status === 'CEKANJE_POTPISA' && roles[0]=='STUDENT' " > (Pregledajte izračun školarine)</span>
+
 <!-- <button type="button" class="btn btn-danger" (click)="status('ODBIJENO')" style="margin-left: 15px;">Odbij</button> -->
 <!-- <button type="button" class="btn btn-warning"  (click)="status('NA_RAZMATRANJU')"style="margin-left: 15px;">Na razmatranju</button> -->
 </div>
@@ -23,9 +28,7 @@
 
 <div class="row">
     <div class="col-sm-6" style="height: 700px;">
-        <!-- <iframe height ="100%" width="90%"src="https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp" title="Iframe Example"></iframe> -->
         <iframe height ="100%" width="90%" #iframe title="Iframe Example"></iframe>
-        <!-- <iframe height ="100%" width="90%" [src]="url" title="Iframe Example"></iframe> -->
     </div>
     <div class="timeline col-sm-6" >
         <div class="entry"*ngFor="let x of komentar">
@@ -38,6 +41,7 @@
           </div>
         </div>
       </div>
+      
 </div>
 
 <div id="myModal" class="modal login-box" style="margin: 0px auto;">
@@ -50,16 +54,6 @@
         <input type="text" class="form-control" name="ime" placeholder="Unesite komentar" required [(ngModel)]="kom.komentar"> >
         <div class="invalid-feedback">Unesite komentar.</div>
       </div>
-      <!-- <div class="form-group">
-        <label for="prioritet" style="color: white;">Prioritet</label>
-        <select class="form-control" name="prioritet" required  [(ngModel)]="oba.prioritet">
-          <option value="">Odaberite prioritet</option>
-          <option value=3>Nizak</option>
-          <option value=2>Srednji</option>
-          <option value=1>Visok</option>
-        </select>
-        <div class="invalid-feedback">Odaberite prioritet.</div>
-      </div> -->
       <div class="form-group">
         <button type="submit" class="btn btn-primary"  onclick="document.getElementById('myModal').style.display='none'">Spremi</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal"  onclick="document.getElementById('myModal').style.display='none'">Zatvori</button>

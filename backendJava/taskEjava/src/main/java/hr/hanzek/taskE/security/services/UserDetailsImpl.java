@@ -26,6 +26,7 @@ public class UserDetailsImpl implements UserDetails {
   private String semestar;
   private Boolean redovan;
   private String jmbag;
+  private String publicKey;
 
   @JsonIgnore
   private String password;
@@ -33,7 +34,7 @@ public class UserDetailsImpl implements UserDetails {
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String username, String email, String password,String name,String smjer,String semestar,Boolean redovan,
-      Collection<? extends GrantedAuthority> authorities, String jmbag) {
+      Collection<? extends GrantedAuthority> authorities, String jmbag,String publicKey) {
     this.id = id;
     this.username = username;
     this.email = email;
@@ -44,6 +45,7 @@ public class UserDetailsImpl implements UserDetails {
     this.redovan= redovan;
     this.semestar = semestar;
     this.jmbag=jmbag;
+    this.publicKey=publicKey;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -61,8 +63,8 @@ public class UserDetailsImpl implements UserDetails {
         user.getSemestar(),
         user.getRedovan(),
         authorities,
-        user.getJmbag());
-    		
+        user.getJmbag(),
+    	user.getPublicKey());
   }
 
   public String getSmjer() {
@@ -156,5 +158,13 @@ public String getJmbag() {
 
 public void setJmbag(String jmbag) {
 	this.jmbag = jmbag;
+}
+
+public String getPublicKey() {
+	return publicKey;
+}
+
+public void setPublicKey(String publicKey) {
+	this.publicKey = publicKey;
 }
 }

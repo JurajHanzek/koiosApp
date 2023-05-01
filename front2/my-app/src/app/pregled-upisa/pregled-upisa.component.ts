@@ -11,6 +11,7 @@ import { MolbaService } from '../nova-molba/molba.service';
 import pdfMake from "pdfmake/build/pdfmake";  
 import pdfFonts from "pdfmake/build/vfs_fonts";  
 import { Predmet } from '../novi-upis/predmet.model';
+import { Potpis } from './potpis.model';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;   
 @Component({
   selector: 'app-pregled-upisa',
@@ -22,11 +23,15 @@ export class PregledUpisaComponent {
   id;
   sub;
   upis: Upis = {} as Upis;
+  potpis: Potpis = {} as Potpis;
   us;
+  roles: string[] = [];
   url=''
   public komentar: Komentar[];
   public predmeti: Predmet[];
   kom: Komentar = {} as Komentar;
+  ukupno=0;
+  privateKey=''
 
   ngOnInit(): void {
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
@@ -49,7 +54,9 @@ export class PregledUpisaComponent {
       )
   });
   const user = this.tokenStorageService.getUser();
+  this.roles = user.roles;
   this.us = user.id;
+  this.privateKey=(localStorage.getItem('token') || '{}');
 }
 constructor(
   private molbaService:MolbaService,
@@ -63,6 +70,87 @@ constructor(
   this.predmeti = [];
  } 
 
+ 
+ public status(st:string): void{
+  this.kom.komentar = "Promijenjem status"+this.upis.status +"->"+st;
+  this.submit();
+  this.upis.status=st;
+  this.upisService.setStatus(this.upis).subscribe(
+    (response: Komentar[]) =>{
+      this.komentar=response;
+      location.reload();
+
+    }, 
+    (error: HttpErrorResponse)=>{
+      Swal.fire({
+        title: 'Error!',
+        text: 'Nešto je pošlo po zlu.',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      }).then(()=>{
+      
+    })
+    }
+  )
+
+}public validiraj(): void{
+    this.upisService.validiraj(this.upis).subscribe(
+      (response: Upis) =>{
+        if(response != null){
+          Swal.fire({
+            title: 'Validirano!',
+            text: 'Potpis je validan.',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+            this.status('USPJESAN_UPIS')
+        }
+      }, 
+      (error: HttpErrorResponse)=>{
+        Swal.fire({
+          title: 'Error!',
+          text: 'Nešto je pošlo po zlu.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        }).then(()=>{
+        
+      })}
+    );
+}
+
+public potpisi(): void{
+  if(this.privateKey == '' || this.privateKey == null){
+    Swal.fire({
+      title: 'Error!',
+      text: 'Molim Vas generirajte novi potpisni ključ na detaljima računa.',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    })
+  }else{
+
+    this.potpis.komentar=this.komentar;
+    this.potpis.upis=this.upis;
+    this.potpis.privateKey=this.privateKey;
+    this.upisService.potpisi(this.potpis).subscribe(
+      () =>{
+        // this.komentar=response;
+        // location.reload();
+        	this.status('POTPISANO')
+      }, 
+      (error: HttpErrorResponse)=>{
+        Swal.fire({
+          title: 'Error!',
+          text: 'Nešto je pošlo po zlu.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        }).then(()=>{
+        
+      })
+      }
+    )
+  }
+}
+
  public dohvatiKomentare(id:number): void{
   this.molbaService.dohvatiKomentare(id).subscribe(
     (response: Komentar[]) =>{
@@ -72,7 +160,11 @@ constructor(
           this.komentar.push(obj);
         }
       })
-      this.generatePDF();
+      if(this.upis.status==='PREDAN_ZAHTJEV'){
+        this.generatePDF();
+      }else{
+        this.generatePDFWithSkolarina();
+      }
       // this.komentar=response;
       // this.generatePDF();
     }, 
@@ -95,7 +187,15 @@ public dohvatiPredmete(id:number): void{
     (response: Predmet[]) =>{
       console.log(response)
       this.predmeti = response;
-      this.generatePDF();
+      this.predmeti.forEach((obj)=>{
+        this.ukupno=this.ukupno+obj.ects;
+      })
+      if(this.upis.status==='PREDAN_ZAHTJEV'){
+        this.generatePDF();
+      }else{
+        this.generatePDFWithSkolarina();
+      }
+     
     }, 
     (error: HttpErrorResponse)=>{
       Swal.fire({
@@ -261,5 +361,180 @@ generatePDF(): void {
   });
 }
 
+generatePDFWithSkolarina(): void {
+  console.log(this.komentar)
+  // Register fonts with pdfMake
+  pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+  // Define document definition
+  const docDefinition = {
+    content: [
+      {
+        text: 'Tehničko Veleučilište u Zagrebu',
+        fontSize: 16,
+        alignment: 'center',
+      },
+      {
+        text: 'UPIS STUDENTA',
+        fontSize: 20,
+        bold: true,
+        alignment: 'center',
+        decoration: 'underline',
+      },
+      {
+        text: "Upis u "+this.upis.semestar+". semestar",
+        style: 'sectionHeader'
+      },
+      {
+        columns: [
+          [
+            {
+              text: this.upis.user,
+              bold:true
+            },
+            { text: this.upis.datum },
+            { text: this.upis.status }
+          ],
+          [
+            {
+              text: `Na datum: ${new Date().toLocaleString()}`,
+              alignment: 'right'
+            },
+            { 
+              text: `Broj upisa : `+ this.upis.id,
+              alignment: 'right'
+            }
+          ]
+        ]
+      },
+      {
+        text: 'Predmeti',
+        style: 'sectionHeader'
+      },
+      {
+        table: {
+          headerRows: 1,
+          widths: ['*', 'auto', 'auto', 'auto'],
+          body: [
+            ['Predmet', 'Nositelj','ECTS', 'Semestar'],
+            ...this.predmeti.map(p => ([p.naziv, p.nositelj,p.ects,p.semestar])),
+          ]
+        }
+      },
+      {
+        text: 'Dodatni detalji',
+        style: 'sectionHeader'
+      },
+      {
+          text: "Upis je u statusu: \n"+ this.upis.status,
+          margin: [0, 0 ,0, 15]          
+      },
+      {
+        text: 'Potpis studenta:',
+        style: 'sectionHeader'
+      },
+      {
+        ul: [
+          this.upis.potpis
+        ],
+    },
+      {
+        text: 'Uvjeti i odredbe:',
+        style: 'sectionHeader'
+      },
+      {
+          ul: [
+            'Ovaj dokument, koji se sastoji od uvjeta i odredbi, primjenjuje se na svakog korisnika koji pristupa ovom web mjestu.',
+            'Korištenjem ovog web mjesta, korisnik prihvaća ove uvjete i odredbe u cijelosti.',
+            'Korisnik se slaže da će koristiti ovo web mjesto samo u svrhe koje su zakonite i na način koji ne krši prava drugih.',
+          ],
+      },{ text: '\n\n\n\n\n\n\n\n\n\n' },
+      {
+        text: 'Tehinčko Veleučilište u Zagrebu',
+        fontSize: 16,
+        alignment: 'center',
+      },
+      {
+        text: 'Izračun školarine',
+        fontSize: 20,
+        bold: true,
+        alignment: 'center',
+        decoration: 'underline',
+      },
+      {
+        text: "Upis u "+this.upis.semestar+". semestar",
+        style: 'sectionHeader'
+      },
+      {
+        columns: [
+          [
+            {
+              text: this.upis.user,
+              bold:true
+            },
+            { text: this.upis.datum },
+            { text: this.upis.status }
+          ],
+          [
+            {
+              text: `Na datum: ${new Date().toLocaleString()}`,
+              alignment: 'right'
+            },
+            { 
+              text: `Broj upisa : `+ this.upis.id,
+              alignment: 'right'
+            }
+          ]
+        ]
+      },
+      {
+        text: 'Predmeti',
+        style: 'sectionHeader'
+      },
+      {
+        table: {
+          headerRows: 1,
+          widths: ['*', 'auto'],
+          body: [
+            ['Predmet', 'Iznos školarine (€)'],
+            ...this.predmeti.map(p => ([p.naziv, p.ects*50])),
+          ]
+        }
+      },
+      {
+        text: 'Ukupna školarina za '+this.upis.semestar +'. semestar:'+this.ukupno*50+'eur',
+        style: 'sectionHeader'
+      },
+      {
+        text: 'Uvjeti i odredbe:',
+        style: 'sectionHeader'
+      },
+      {
+          ul: [
+            'Ovaj dokument, koji se sastoji od uvjeta i odredbi, primjenjuje se na svakog korisnika koji pristupa ovom web mjestu.',
+            'Korištenjem ovog web mjesta, korisnik prihvaća ove uvjete i odredbe u cijelosti.',
+            'Korisnik se slaže da će koristiti ovo web mjesto samo u svrhe koje su zakonite i na način koji ne krši prava drugih.',
+          ],
+      },
+    ],
+    styles: {
+      sectionHeader: {
+        bold: true,
+        decoration: 'underline',
+        fontSize: 14,
+        margin: [0, 15,0, 15]          
+      }
+    }
+  };
+
+
+
+
+  // Create PDF and set iframe source
+  const pdfDocGenerator = pdfMake.createPdf(docDefinition);
+  pdfDocGenerator.getDataUrl((dataUrl) => {
+    this.url=dataUrl;
+    this.iframe!.nativeElement.src = dataUrl;
+  });
+}
 }
