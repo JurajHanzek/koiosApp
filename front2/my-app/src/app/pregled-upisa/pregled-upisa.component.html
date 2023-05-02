@@ -14,7 +14,7 @@
 <br>
 <div style="padding-top: 15px;">
 <button type="button" class="btn btn-success" (click)="status('CEKANJE_POTPISA')" *ngIf="upis.status === 'PREDAN_ZAHTJEV' && roles[0]=='REFERADA' " >Napravi izračun i šalji na potpis</button>
-<button type="button" class="btn btn-success" (click)="potpisi()" *ngIf="upis.status === 'CEKANJE_POTPISA' && roles[0]=='STUDENT' " >Potpiši dokument i pošalji referadi </button>
+<button type="button" class="btn btn-success" (click)="potpisi()"  >Potpiši dokument i pošalji referadi </button>
 <button type="button" class="btn btn-success" (click)="validiraj()" *ngIf="upis.status === 'POTPISANO' && roles[0]=='REFERADA' " >Validiraj potpis i završi upis</button>
 <!-- <button type="button" class="btn btn-success" (click)="validiraj()" >Validiraj potpis i završi upis</button> -->
 

@@ -247,10 +247,9 @@ generatePDF(): void {
   const docDefinition = {
     content: [
       {
-        text: 'Tehinčko Veleučilište u Zagrebu',
+        text: 'Tehničko Veleučilište u Zagrebu',
         fontSize: 16,
         alignment: 'center',
-        color: '#047886'
       },
       {
         text: 'UPIS STUDENTA',
@@ -258,7 +257,6 @@ generatePDF(): void {
         bold: true,
         alignment: 'center',
         decoration: 'underline',
-        color: 'skyblue'
       },
       {
         text: "Upis u "+this.upis.semestar+". semestar",
@@ -450,7 +448,7 @@ generatePDFWithSkolarina(): void {
           ],
       },{ text: '\n\n\n\n\n\n\n\n\n\n' },
       {
-        text: 'Tehinčko Veleučilište u Zagrebu',
+        text: 'Tehničko Veleučilište u Zagrebu',
         fontSize: 16,
         alignment: 'center',
       },

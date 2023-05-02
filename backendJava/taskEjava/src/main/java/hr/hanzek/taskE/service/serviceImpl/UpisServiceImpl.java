@@ -75,23 +75,8 @@ public class UpisServiceImpl implements UpisService{
 	        PrivateKey privateKey = keyPair.getPrivate();
 	        PublicKey publicKey = keyPair.getPublic();
 	        
-	        System.out.println(keyPair);
 	        key.setPrivateKey(Base64.getEncoder().encodeToString(privateKey.getEncoded()));
 	        iUpisDAO.updatePublicKey( Base64.getEncoder().encodeToString(publicKey.getEncoded()),id);
-	        // Get an instance of Signature object and initialize it.
-//	        Signature signature = Signature.getInstance("SHA1withDSA", "SUN");
-//	        signature.initSign(privateKey);
-
-	        // Supply the data to be signed to the Signature object
-	        // using the update() method and generate the digital
-	        // signature.
-//	        byte[] bytes = Files.readAllBytes(Paths.get("README.md"));
-//	        signature.update(bytes);
-//	        byte[] digitalSignature = signature.sign();
-
-	        // Save digital signature and the public key to a file.
-//	        Files.write(Paths.get("signature"), digitalSignature);
-//	        Files.write(Paths.get("publickey"), keyPair.getPublic().getEncoded());
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -171,12 +156,7 @@ public class UpisServiceImpl implements UpisService{
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
-		 if(result) {
 			 return upis;
-		 }else {
-			 return null;
-		 }
-	
 	}
 
 }

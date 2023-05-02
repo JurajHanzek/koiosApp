@@ -67,12 +67,10 @@ export class PostavkeComponent {
             title: 'Error!',
             text: 'Nešto je pošlo po zlu.',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Ok'
           })
         }
       )
-
-
   }
 
 }

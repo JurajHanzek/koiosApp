@@ -70,10 +70,10 @@ export class DetaljiMolbeComponent implements OnInit{
     const docDefinition = {
       content: [
         {
-          text: 'Tehinčko Veleučilište u Zagrebu',
+          text: 'Tehničko Veleučilište u Zagrebu',
           fontSize: 16,
           alignment: 'center',
-          color: '#047886'
+          // color: '#047886'
         },
         {
           text: 'MOLBA',
@@ -81,7 +81,7 @@ export class DetaljiMolbeComponent implements OnInit{
           bold: true,
           alignment: 'center',
           decoration: 'underline',
-          color: 'skyblue'
+          // color: 'skyblue'
         },
         {
           text: this.molba.tip,
@@ -132,12 +132,12 @@ export class DetaljiMolbeComponent implements OnInit{
             text: "Molba je u statusu: "+this.molba.status,
             margin: [0, 0 ,0, 15]          
         },
-        {
-          columns: [
-            [{ qr: this.molba.tip+"-"+this.molba.datum+"-"+this.molba.userId, fit: '50' }],
-            [{ text: 'Potpis studenta', alignment: 'right', italics: true}],
-          ]
-        },
+        // {
+        //   columns: [
+        //     [{ qr: this.molba.tip+"-"+this.molba.datum+"-"+this.molba.userId, fit: '50' }],
+        //     [{ text: 'Potpis studenta', alignment: 'right', italics: true}],
+        //   ]
+        // },
         {
           text: 'Uvjeti i odredbe:',
           style: 'sectionHeader'
